@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class ArrayEditor {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        //  Definir o tamanho do array
+        System.out.print("Digite o tamanho do array: ");
+        int tamanho = scanner.nextInt();
+        int[] array = new int[tamanho];
+
+        // Inicializar o array com valores padrão (zero)
+        for (int i = 0; i < tamanho; i++) {
+            array[i] = 0;
+        }
+
+        // Permitir ao usuário inserir valores nas posições desejadas
+        char continuar = 's'; // Inicializa a variável
+
+        do {
+            System.out.print("\nDigite a posição onde deseja inserir o valor (0 a " + (tamanho - 1) + "): ");
+            int posicao = scanner.nextInt();
+
+            // Verifica se a posição é válida
+            if (posicao < 0 || posicao >= tamanho) {
+                System.out.println("Posição inválida! Tente novamente.");
+                continue;
+            }
+
+            System.out.print("Digite o valor a ser armazenado: ");
+            int valor = scanner.nextInt();
+
+            // Inserir o valor na posição escolhida
+            array[posicao] = valor;
+
+            // Exibir o array atualizado
+            System.out.println("\nArray atualizado:");
+            for (int i = 0; i < tamanho; i++) {
+                System.out.print(array[i] + " ");
+            }
+            System.out.println(); // Pula linha
+
+            // Perguntar se o usuário quer continuar
+            System.out.print("\nDeseja continuar inserindo valores? (s/n): ");
+            continuar = scanner.next().charAt(0);
+        } while (continuar == 's' || continuar == 'S');
+
+        System.out.println("Programa encerrado!");
+        scanner.close();
+    }
+}
