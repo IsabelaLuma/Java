@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class MatrizEditor {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Definir o tamanho da matriz
+        System.out.print("Digite o número de linhas da matriz: ");
+        int linhas = scanner.nextInt();
+
+        System.out.print("Digite o número de colunas da matriz: ");
+        int colunas = scanner.nextInt();
+
+        int[][] matriz = new int[linhas][colunas];
+
+        // Inicializar a matriz com zeros
+        for (int i = 0; i < linhas; i++) {
+            for (int j = 0; j < colunas; j++) {
+                matriz[i][j] = 0;
+            }
+        }
+
+        // Variável para controle do loop
+        char continuar = 's';
+
+        //  Inserção de valores
+        do {
+            System.out.print("\nDigite a linha (0 a " + (linhas - 1) + "): ");
+            int linha = scanner.nextInt();
+
+            System.out.print("Digite a coluna (0 a " + (colunas - 1) + "): ");
+            int coluna = scanner.nextInt();
+
+            // Verifica se a posição é válida
+            if (linha < 0 || linha >= linhas || coluna < 0 || coluna >= colunas) {
+                System.out.println("Posição inválida! Tente novamente.");
+                continue;
+            }
+
+            System.out.print("Digite o valor a ser armazenado: ");
+            int valor = scanner.nextInt();
+
+            // Inserir valor na matriz
+            matriz[linha][coluna] = valor;
+
+            // Exibir matriz atualizada
+            System.out.println("\nMatriz atualizada:");
+            for (int i = 0; i < linhas; i++) {
+                for (int j = 0; j < colunas; j++) {
+                    System.out.print(matriz[i][j] + "\t");
+                }
+                System.out.println();
+            }
+
+            // Perguntar se o usuário quer continuar
+            System.out.print("\nDeseja continuar inserindo valores? (s/n): ");
+            continuar = scanner.next().charAt(0);
+        } while (continuar == 's' || continuar == 'S');
+
+        System.out.println("Programa encerrado!");
+        scanner.close();
+    }
+}
