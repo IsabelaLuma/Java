@@ -1,0 +1,271 @@
+1. Soma, Média, Maior e Menor dos valores de um vetor A de 100 elementos
+
+import java.util.Scanner;
+
+public class VetorSomaMediaMaiorMenor {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] A = new int[100];
+        int soma = 0, maior = Integer.MIN_VALUE, menor = Integer.MAX_VALUE;
+        for (int i = 0; i < A.length; i++) {
+            System.out.print("Digite o valor para A[" + i + "]: ");
+            A[i] = sc.nextInt();
+            soma += A[i];
+            if (A[i] > maior) maior = A[i];
+            if (A[i] < menor) menor = A[i];
+        }
+        double media = soma / 100.0;
+
+        System.out.println("Soma: " + soma);
+        System.out.println("Média: " + media);
+        System.out.println("Maior: " + maior);
+        System.out.println("Menor: " + menor);
+    }
+}
+
+
+2. Copiar o conteúdo de um vetor em um segundo vetor
+
+public class CopiarVetor {
+    public static void main(String[] args) {
+        int[] A = {1, 2, 3, 4, 5};
+        int[] B = new int[A.length];
+
+        for (int i = 0; i < A.length; i++) {
+            B[i] = A[i];
+        }
+        System.out.print("Vetor B: ");
+        for (int i : B) {
+            System.out.print(i + " ");
+        }
+    }
+}
+
+
+3. Somar o conteúdo de dois vetores e armazenar o resultado em um terceiro vetor
+
+public class SomarVetores {
+    public static void main(String[] args) {
+        int[] A = {1, 2, 3};
+        int[] B = {4, 5, 6};
+        int[] C = new int[A.length];
+        for (int i = 0; i < A.length; i++) {
+            C[i] = A[i] + B[i];
+        }
+
+        System.out.print("Resultado da soma: ");
+        for (int i : C) {
+            System.out.print(i + " ");
+        }
+    }
+}
+
+4. Comparar dois vetores (quantos elementos iguais nas mesmas posições)
+
+public class CompararVetores {
+    public static void main(String[] args) {
+        int[] V1 = {1, 2, 3, 4, 5};
+        int[] V2 = {1, 2, 3, 7, 5};
+        int contador = 0;
+
+        for (int i = 0; i < V1.length; i++) {
+            if (V1[i] == V2[i]) {
+                contador++;
+            }
+        }
+
+        System.out.println("Quantidade de elementos iguais nas mesmas posições: " + contador);
+    }
+}
+
+5. Operações de conjuntos: União, Intersecção, Diferença
+import java.util.HashSet;
+import java.util.Set;
+
+public class OperacoesConjuntos {
+    public static void main(String[] args) {
+        int[] A = {2, 4, 7, 13, 14, 15, 16};
+        int[] B = {1, 6, 7, 11, 13, 16, 18};
+
+        Set<Integer> setA = new HashSet<>();
+        Set<Integer> setB = new HashSet<>();
+        Set<Integer> uniao = new HashSet<>();
+        Set<Integer> intersecao = new HashSet<>();
+        Set<Integer> diferenca = new HashSet<>();
+
+        // Adiciona os elementos nos sets
+        for (int num : A) setA.add(num);
+        for (int num : B) setB.add(num);
+
+        // União
+        uniao.addAll(setA);
+        uniao.addAll(setB);
+
+        // Intersecção
+        intersecao.addAll(setA);
+        intersecao.retainAll(setB);
+
+        // Diferença
+        diferenca.addAll(setA);
+        diferenca.removeAll(setB);
+
+        // Exibe os resultados
+        System.out.println("União A ⋃ B: " + uniao);
+        System.out.println("Intersecção A ⋂ B: " + intersecao);
+        System.out.println("Diferença A − B: " + diferenca);
+    }
+}
+6. Trocar elementos de um vetor (primeiro com o último, segundo com o penúltimo, etc.)
+import java.util.Scanner;
+
+public class TrocarElementos {
+    public static void main(String[] args) {
+        int[] N = new int[20];
+        Scanner sc = new Scanner(System.in);
+
+        // Lê os valores do vetor N
+        for (int i = 0; i < N.length; i++) {
+            System.out.print("Digite o valor para N[" + i + "]: ");
+            N[i] = sc.nextInt();
+        }
+
+        // Troca os elementos conforme a descrição
+        for (int i = 0; i < 10; i++) {
+            int temp = N[i];
+            N[i] = N[19 - i];
+            N[19 - i] = temp;
+        }
+
+        // Exibe o vetor após a troca
+        System.out.print("Vetor modificado: ");
+        for (int i : N) {
+            System.out.print(i + " ");
+        }
+    }
+}
+7. Computar votos de uma eleição
+import java.util.Scanner;
+
+public class Eleicao {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite o número de candidatos: ");
+        int n = sc.nextInt();
+
+        System.out.print("Digite o número de votantes: ");
+        int m = sc.nextInt();
+
+        int[] votos = new int[n];
+
+        // Coleta os votos
+        for (int i = 0; i < m; i++) {
+            System.out.print("Voto do " + (i + 1) + "º votante: ");
+            int voto = sc.nextInt();
+            if (voto >= 1 && voto <= n) {
+                votos[voto - 1]++;
+            } else {
+                System.out.println("Voto inválido.");
+            }
+        }
+
+        // Exibe os votos de cada candidato
+        for (int i = 0; i < n; i++) {
+            System.out.println("Candidato " + (i + 1) + " recebeu " + votos[i] + " votos.");
+        }
+    }
+}
+8. Verificar se já existe uma matrícula informada
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class MatriculasAlunos {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Set<Integer> matriculas = new HashSet<>();
+
+        // Lê 100 matrículas
+        for (int i = 0; i < 100; i++) {
+            System.out.print("Digite a matrícula do aluno " + (i + 1) + ": ");
+            int matricula = sc.nextInt();
+            if (matriculas.contains(matricula)) {
+                System.out.println("Matrícula já informada. Alerta!");
+            } else {
+                matriculas.add(matricula);
+            }
+        }
+
+        // Exibe as matrículas registradas
+        System.out.println("Matrículas registradas: " + matriculas);
+    }
+}
+9. Separar valores pares e ímpares
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class ParesImpares {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite o número de elementos: ");
+        int N = sc.nextInt();
+        int[] A = new int[N];
+        
+        // Lê o vetor A
+        for (int i = 0; i < N; i++) {
+            System.out.print("Digite A[" + i + "]: ");
+            A[i] = sc.nextInt();
+        }
+
+        List<Integer> pares = new ArrayList<>();
+        List<Integer> impares = new ArrayList<>();
+
+        // Separa os números em pares e ímpares
+        for (int num : A) {
+            if (num % 2 == 0) {
+                pares.add(num);
+            } else {
+                impares.add(num);
+            }
+        }
+
+        // Exibe os resultados
+        System.out.println("Pares: " + pares);
+        System.out.println("Ímpares: " + impares);
+    }
+}
+10. Intercalar dois vetores ordenados
+public class IntercalarVetores {
+    public static void main(String[] args) {
+        int[] A = {1, 4, 7};
+        int[] B = {2, 5, 8};
+        int[] C = new int[A.length + B.length];
+
+        int i = 0, j = 0, k = 0;
+
+        // Intercalação dos dois vetores
+        while (i < A.length && j < B.length) {
+            if (A[i] < B[j]) {
+                C[k++] = A[i++];
+            } else {
+                C[k++] = B[j++];
+            }
+        }
+
+        // Preenche o vetor C com o restante
+        while (i < A.length) {
+            C[k++] = A[i++];
+        }
+        while (j < B.length) {
+            C[k++] = B[j++];
+        }
+
+        // Exibe o vetor C resultante
+        System.out.print("Vetor C (intercalado): ");
+        for (int num : C) {
+            System.out.print(num + " ");
+        }
+    }
+}
